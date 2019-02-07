@@ -2,7 +2,7 @@
 
 A basic action to deploy to a [WP Engine](https://wpengine.com) production site via git.
 
-** !!! FOR TESTING PURPOSES ONLY -- DO NOT USE FOR PRODUCTION !!!**
+**!!! FOR TESTING PURPOSES ONLY -- DO NOT USE FOR PRODUCTION !!!**
 
 ## Example workflow
 
