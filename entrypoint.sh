@@ -3,14 +3,14 @@
 set -e
 
 : ${WPENGINE_SITE?Required environment variable not set.}
-: ${SSH_DEPLOY_KEY?Required secret not set.}
-: ${SSH_DEPLOY_KEY_PUB?Required secret not set.}
+: ${WPENGINE_SSH_KEY_PRIVATE?Required secret not set.}
+: ${WPENGINE_SSH_KEY_PUBLIC?Required secret not set.}
 
 SSH_PATH="$HOME/.ssh"
 WPENGINE_HOST="git.wpengine.com"
 KNOWN_HOSTS="$SSH_PATH/known_hosts"
-SSH_DEPLOY_KEY="$SSH_PATH/deploy_key"
-SSH_DEPLOY_KEY_PUB="$SSH_PATH/deploy_key.pub"
+WPENGINE_SSH_KEY_PRIVATE="$SSH_PATH/wpengine_key"
+WPENGINE_SSH_KEY_PUBLIC="$SSH_PATH/wpengine_key.pub"
 WPENGINE_ENVIRONMENT_DEFAULT="production"
 WPENGINE_ENV=${WPENGINE_ENVIRONMENT:-$WPENGINE_ENVIRONMENT_DEFAULT}
 
