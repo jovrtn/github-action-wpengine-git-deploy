@@ -1,21 +1,20 @@
-# GitHub Action for WP Engine Deployments
+# GitHub Action for WP Engine Git Deployments
 
-A basic action to deploy to a [WP Engine](https://wpengine.com) production site via git.
-
-**!!! FOR TESTING PURPOSES ONLY -- DO NOT USE FOR PRODUCTION !!!**
+An action to deploy your repository to a **[WP Engine](https://wpengine.com)** site via git. [Read more](https://wpengine.com/git/) about WP Engine's git deployment support.
 
 ## Example GitHub Action workflow
 
 ```
-workflow "Deploy to Production" {
+workflow "Deploy to WP Engine" {
   on = "push"
-  resolves = ["WP Engine Deploy"]
+  resolves = ["Git Push to Production"]
 }
 
-action "WP Engine Deploy" {
+action "Git Push to Production" {
   uses = "jovrtn/github-action-wpengine-deploy@master"
   env = {
-    WPE_PRODUCTION_NAME  = "<your-wpengine-site-name>"
+    WPENGINE_SITE  = "my-cool-wordpress-site"
+    WPENGINE_ENVIRONMENT  = "production"
   }
   secrets = [
     "WPENGINE_PRIVATE_KEY",
@@ -23,6 +22,27 @@ action "WP Engine Deploy" {
   ]
 }
 ```
+
+## Environment Variables & Secrets
+
+### Required
+
+| Name | Type | Usage |
+|-|-|-|
+| `WPENGINE_SITE` | Environment Variable | The name of the WP Engine site you want to deploy to. |
+| `WPENGINE_PRIVATE_KEY` | Secret | Private SSH key of your WP Engine git deploy user. See below for SSH key usage. |
+|  `WPENGINE_PUBLIC_KEY` | Secret | Public SSH key of your WP Engine git deploy user. See below for SSH key usage. |
+
+### Optional
+
+| Name | Type  | Usage |
+|-|-|-|
+| `WPENGINE_ENVIRONMENT` | Environment Variable  | The site's environment you want to deploy to, e.g. production, staging, development. Defaults to `production` |
+
+### Further reading
+
+* [Defining environment variables in GitHub Actions](https://developer.github.com/actions/creating-github-actions/accessing-the-runtime-environment/#environment-variables)
+* [Storing secrets in GitHub repositories](https://developer.github.com/actions/managing-workflows/storing-secrets/)
 
 ## Setting up your SSH keys
 
