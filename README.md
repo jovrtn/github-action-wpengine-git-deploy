@@ -11,7 +11,7 @@ workflow "Deploy to WP Engine" {
 }
 
 action "Git Push to Production" {
-  uses = "jovrtn/github-action-wpengine-deploy@master"
+  uses = "jovrtn/github-action-wpengine-git-deploy@master"
   env = {
     WPENGINE_SITE         = "my-cool-wordpress-site"
     WPENGINE_ENVIRONMENT  = "production"
